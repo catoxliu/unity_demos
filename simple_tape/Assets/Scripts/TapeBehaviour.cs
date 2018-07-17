@@ -25,8 +25,6 @@ public class TapeBehaviour : MonoBehaviour {
 
         Material defaultTapeMat = Resources.Load("Materials/DefaultTapeMaterial") as Material;
         mr.material = defaultTapeMat;
-
-        //transform.position = new Vector3(-mfTapeWidth, 0, 0);
     }
 	
 	// Update is called once per frame
@@ -51,9 +49,16 @@ public class TapeBehaviour : MonoBehaviour {
         var tapeVertices = mTapeMesh.vertices;
         var tapeUVs = mTapeMesh.uv;
         var tapeTriangles = mTapeMesh.triangles;
+
+        var convexHull = GetConvexHull(pg.mPolygonVertices);
+        Debug.Log(convexHull.Count);
+
         for (int i = 0; i <= pg.mPolygonVertices.Length; i++)
         {
             var vertice = i == pg.mPolygonVertices.Length ? Vector2.zero : pg.mPolygonVertices[i];
+
+            if (!convexHull.Contains(vertice))
+                Debug.Log("Concave point!");
 
             var edge = vertice - startPoint;
             var length = edge.magnitude;
@@ -120,5 +125,34 @@ public class TapeBehaviour : MonoBehaviour {
         dir = Quaternion.Euler(0, 0, angle) * dir;
         p = dir + pivot;
         return p;
+    }
+
+    List<Vector2> GetConvexHull(Vector2[] vertices)
+    {
+        var points = new Vector2[vertices.Length];
+        vertices.CopyTo(points, 0);
+        System.Array.Sort(points, (Vector2 a, Vector2 b) => Mathf.CeilToInt(
+            Vector2.SignedAngle(Vector2.right, a)-Vector2.SignedAngle(Vector2.right, b)));
+        List<Vector2> result = new List<Vector2>();
+        result.Add(Vector2.zero);
+        foreach (var p in points)
+        {
+            if (result.Count == 1)
+            {
+                result.Add(p);
+                continue;
+            }
+
+            while (Vector2.SignedAngle(result[result.Count - 1] - result[result.Count - 2], p - result[result.Count - 2]) < 0)
+            {
+                result.RemoveAt(result.Count - 1);
+                if (result.Count == 1)
+                    break;
+            }
+            result.Add(p);
+        }
+
+        result.Reverse();
+        return result;
     }
 }
