@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TapeBehaviour : MonoBehaviour {
+public class TapeBehaviour : MonoBehaviour
+{
 
     public float mfTapeIncrement = 0.003f;
 
@@ -12,12 +13,13 @@ public class TapeBehaviour : MonoBehaviour {
     private float mfTapeRotateSpeed = -1;
     private GameObject mTape;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         mTape = transform.GetChild(0).gameObject;
         mTapeMesh = new Mesh();
         mTapeMesh.vertices = new Vector3[] { new Vector3(0, 0, 0), new Vector3(-mfTapeWidth, 0, 0), new Vector3(0, mfDefaultTapeHeight, 0), new Vector3(-mfTapeWidth, mfDefaultTapeHeight, 0), new Vector3(-mfTapeWidth, 0, 0) };
-        mTapeMesh.uv = new Vector2[] { new Vector2(0, 0), new Vector2(0, 1), new Vector2(1, 1), new Vector2(1, 0), new Vector2(0,0) };
+        mTapeMesh.uv = new Vector2[] { new Vector2(0, 0), new Vector2(0, 1), new Vector2(1, 1), new Vector2(1, 0), new Vector2(0, 0) };
         mTapeMesh.triangles = new int[] { 0, 1, 2, 1, 3, 2, 0, 4, 1 };
         MeshFilter mf = mTape.AddComponent<MeshFilter>();
         MeshRenderer mr = mTape.AddComponent<MeshRenderer>();
@@ -26,10 +28,11 @@ public class TapeBehaviour : MonoBehaviour {
         Material defaultTapeMat = Resources.Load("Materials/DefaultTapeMaterial") as Material;
         mr.material = defaultTapeMat;
     }
-	
-	// Update is called once per frame
-	void Update () {
-		if (Input.GetKey(KeyCode.Space))
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (Input.GetKey(KeyCode.Space))
         {
             Vector3[] vers = mTapeMesh.vertices;
             vers[2].y = vers[2].y + mfTapeIncrement;
@@ -57,13 +60,47 @@ public class TapeBehaviour : MonoBehaviour {
         {
             var vertice = i == pg.mPolygonVertices.Length ? Vector2.zero : pg.mPolygonVertices[i];
 
+            var tapeLength = (tapeVertices[2] - tapeVertices[0]).magnitude;
+
             if (!convexHull.Contains(vertice))
+            {
                 Debug.Log("Concave point!");
+                var idx = i;
+                List<Vector2> concavePoints = new List<Vector2>();
+                concavePoints.Add(vertice);
+                while (idx < pg.mPolygonVertices.Length)
+                {
+                    idx++;
+                    vertice = idx == pg.mPolygonVertices.Length ? Vector2.zero : pg.mPolygonVertices[idx];
+                    if (convexHull.Contains(vertice))
+                        break;
+                    concavePoints.Add(vertice);
+                }
+                i = idx;
+
+                var convexEdge = vertice - startPoint;
+                var convexEdgeLength = convexEdge.magnitude;
+
+                concavePoints.Sort((Vector2 a, Vector2 b) =>
+                    {
+                        var c = Vector2.Distance(a, startPoint) * Mathf.Sin(
+                            Vector2.Angle(convexEdge, a - startPoint) * Mathf.Deg2Rad)
+                        - Vector2.Distance(b, startPoint) * Mathf.Sin(
+                            Vector2.Angle(convexEdge, b - startPoint) * Mathf.Deg2Rad);
+                        return c < 0 ? -Mathf.CeilToInt(Mathf.Abs(c)) : Mathf.CeilToInt(c);
+                    });
+
+                idx = 0;
+                if (tapeLength <= convexEdgeLength)
+                {
+
+                }
+            }
+
 
             var edge = vertice - startPoint;
             var length = edge.magnitude;
 
-            var tapeLength = (tapeVertices[2] - tapeVertices[0]).magnitude;
             bool bBreak = tapeLength <= length;
             var wrapVertice = Vector3.MoveTowards(tapeVertices[0], tapeVertices[2], bBreak ? tapeLength : length);
 
@@ -131,8 +168,12 @@ public class TapeBehaviour : MonoBehaviour {
     {
         var points = new Vector2[vertices.Length];
         vertices.CopyTo(points, 0);
-        System.Array.Sort(points, (Vector2 a, Vector2 b) => Mathf.CeilToInt(
-            Vector2.SignedAngle(Vector2.right, a)-Vector2.SignedAngle(Vector2.right, b)));
+        System.Array.Sort(points, (Vector2 a, Vector2 b) =>
+        {
+            var c = Vector2.SignedAngle(Vector2.right, a) - Vector2.SignedAngle(Vector2.right, b);
+            return c < 0 ? -(Mathf.CeilToInt(Mathf.Abs(c))) : Mathf.CeilToInt(c);
+        }
+            );
         List<Vector2> result = new List<Vector2>();
         result.Add(Vector2.zero);
         foreach (var p in points)
