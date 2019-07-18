@@ -1,0 +1,22 @@
+ManifestFileVersion: 0
+CRC: 3153271763
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 465af06ffbb511a9e7565f7a4e832a69
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: cd0c01fc6cdcda8916e5f03f41d87270
+HashAppended: 0
+ClassTypes:
+- Class: 114
+  Script: {fileID: 11500000, guid: 0d9418a6e9ae67b40966e1d7daacbec4, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+Assets:
+- Assets/Dialogues/area_2_enter_area.asset
+- Assets/Dialogues/area_1_enter_area.asset
+Dependencies:
+- C:/Users/catox/workspace/catox_git/unity_demos/Dialogue/Assets/AssetBundles/Android/ui_dialog_characters

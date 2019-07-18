@@ -1,0 +1,39 @@
+ManifestFileVersion: 0
+CRC: 1159615696
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 3ba1215e07cb64cb39f41c177bb23910
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 1b3feb9bc6055cd677abb4cd6f720d90
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+- Class: 687078895
+  Script: {instanceID: 0}
+Assets:
+- Assets/Sprites/characters/klaus/mc_klaus_laughing.png
+- Assets/Sprites/characters/floom/mc_waterstarter_angry.png
+- Assets/Sprites/characters/floom/mc_waterstarter_happy.png
+- Assets/Sprites/characters/shopkeeper/mc_shopkeeper_determined.png
+- Assets/Sprites/characters/floom/mc_waterstarter_confused.png
+- Assets/Sprites/characters/floom/mc_waterstarter_eyeroll.png
+- Assets/Sprites/characters/floom/mc_waterstarter_scared.png
+- Assets/Sprites/characters/kol/mc_kol_shocked.png
+- Assets/Sprites/characters/shopkeeper/mc_shopkeeper_laughing.png
+- Assets/Sprites/characters/kol/mc_kol_laughing.png
+- Assets/Sprites/characters/kol/mc_kol_happy.png
+- Assets/Sprites/characters/klaus/mc_klaus_sad.png
+- Assets/Sprites/characters/klaus/mc_klaus_shocked.png
+- Assets/Sprites/characters/shopkeeper/mc_shopkeeper_depressed.png
+- Assets/Sprites/characters/kol/mc_kol_determined.png
+- Assets/Sprites/characters/klaus/mc_klaus_happy.png
+- Assets/Sprites/characters/kol/mc_kol_depressed.png
+- Assets/Sprites/characters/shopkeeper/mc_shopkeeper_happy.png
+- Assets/Sprites/characters/klaus/mc_klaus_determined.png
+- Assets/Sprites/characters/shopkeeper/mc_shopkeeper_shocked.png
+Dependencies: []

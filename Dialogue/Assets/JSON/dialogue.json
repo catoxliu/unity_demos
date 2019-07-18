@@ -1,0 +1,75 @@
+{
+    "Dialogues": [	
+        {
+            "ID": "area_2_enter_area",
+            "Statements": [
+                {
+                    "StringID" : "<speed = 0.04><color=#ff0000ff>Kol: </color>What's that <i>thing</i> travelling with you... <b>A MONSTER!?</b> You can't bring that into Stone Gut! Into our <i>home!</i> You know how dangerous they are!!!<input></speed>",
+					"LeftHand" : true,
+					"Charactor" : "kol"
+                },
+                {
+                    "StringID" : "<speed=0.04><color=#ff0000ff>Floom: </color>...<input></speed>",
+					"LeftHand" : false,
+					"Charactor" : "floom"
+                },
+                {
+                    "StringID" : "<speed=0.04><color=#008000ff>Klaus: </color>No, this monster's not like that. Kol, <i>come back!</i><input></speed>",
+					"LeftHand" : false,
+					"Charactor" : "klaus"
+                },
+                {
+                    "StringID" : "<speed=0.04><color=#008000ff>Shopkeeper: </color>Let him go, Klaus...<emotion=happy> You must be careful.<input></speed>",
+					"LeftHand" : true,
+					"Charactor" : "shopkeeper"
+                },
+                {
+                    "StringID" : "<speed=0.04>If <b>Commander Cobalt</b> and his Brute Squad find you fraternising with monsters, they'll have you locked in the Mole Cage forever.<input></speed>",
+					"LeftHand" : true,
+					"Charactor" : "shopkeeper"
+                },
+                {
+                    "StringID" : "<speed=0.04>Well, since you've gotten yourself into this mess, you might as well learn how to manage it...<input></speed>",
+					"LeftHand" : true,
+					"Charactor" : "shopkeeper"
+                }
+            ]
+        }
+		,
+		{
+            "ID": "area_1_enter_area",
+            "Statements": [
+                {
+                    "StringID" : "<speed=0.1><color=#ff0000ff>Kol: </color>What's that <i>thing</i> travelling with you... <emotion=laughing><b>A MONSTER!?</b> You can't bring that into Stone Gut! Into our <i>home!</i> <emotion=shocked>You know how dangerous they are!!!<input></speed>",
+					"LeftHand" : true,
+					"Charactor" : "kol"
+                },
+                {
+                    "StringID" : "<speed=0.1><color=#ff0000ff><size=100>Floom: </size></color><shake=2.5>.<shake=2>.<shake=1.5>.<shake=3><input></speed>",
+					"LeftHand" : false,
+					"Charactor" : "floom"
+                },
+                {
+                    "StringID" : "<speed=0.04><color=#008000ff>Klaus: </color>No, <wait=1.33><emotion=sad>this monster's not like that. Kol, <i>come back!</i><input></speed>",
+					"LeftHand" : false,
+					"Charactor" : "klaus"
+                },
+                {
+                    "StringID" : "<speed=0.04><color=#008000ff>Shopkeeper: </color>Let him go, Klaus...<emotion=happy> You must be careful.<input></speed>",
+					"LeftHand" : true,
+					"Charactor" : "shopkeeper"
+                },
+                {
+                    "StringID" : "<speed=0.04>If <b>Commander Cobalt</b> and his Brute Squad find<hide>HIDE SOME THING HERE</hide> you fraternising with monsters, they'll have you locked in the Mole Cage forever.<input></speed>",
+					"LeftHand" : true,
+					"Charactor" : "shopkeeper"
+                },
+                {
+                    "StringID" : "<speed=0.04>Well, since you've gotten yourself into this mess, you might as well learn how to manage it...<input></speed>",
+					"LeftHand" : true,
+					"Charactor" : "shopkeeper"
+                }
+            ]
+        }
+	]
+}

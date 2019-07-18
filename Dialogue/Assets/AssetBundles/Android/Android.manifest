@@ -1,0 +1,11 @@
+ManifestFileVersion: 0
+CRC: 1606400399
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: ui_dialog_characters
+      Dependencies: {}
+    Info_1:
+      Name: dialogue_content
+      Dependencies:
+        Dependency_0: ui_dialog_characters
