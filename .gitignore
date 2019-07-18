@@ -3,7 +3,16 @@
 [Oo]bj/
 [Bb]uild/
 [Bb]uilds/
+VRDemo/Assets/[Oo]culus/
+VRDemo/Assets/[Oo]culus.meta
 Assets/AssetStoreTools*
+Dialogue/Assets/Resources/
+Dialogue/Assets/Resources.meta
+Dialogue/Assets/Sprites/
+Dialogue/Assets/Sprites.meta
+match3/
+*[Ll]ogs/
+*[Ll]og/
 
 # Visual Studio cache directory
 .vs/
