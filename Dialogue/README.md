@@ -1,4 +1,4 @@
-##Simple demo for a Dialogue UI
+## Simple demo for a Dialogue UI
 
 parse the json file at build time in Editor and split all the dialog information
 into patterns and store the results in ScriptableObject, which will be used directly
